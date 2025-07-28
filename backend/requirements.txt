@@ -3,3 +3,6 @@ djangorestframework
 psycopg2-binary
 python-decouple
 django-cors-headers
+black
+flake8
+# pytest
