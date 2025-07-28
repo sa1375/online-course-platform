@@ -20,9 +20,9 @@ services:
     container_name: course_backend
     restart: always
     volumes:
-      - ./backend:/app         # bind mount در زمان اجرای کانتینر
+      - ./backend:/app # bind mount در زمان اجرای کانتینر
     env_file:
-          - ./backend/.env
+      - ./backend/.env
     ports:
       - "8000:8000"
     depends_on:
@@ -34,20 +34,17 @@ services:
     container_name: course_frontend
     restart: always
     volumes:
-      - ./frontend:/app                        # Project files (bind mount)
+      - ./frontend:/app # Project files (bind mount)
       - npm_cache:/app/.npm-cache
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
-      - WATCHPACK_POLLING=true                 # Enable file watching in containers
+      - WATCHPACK_POLLING=true # Enable file watching in containers
     depends_on:
       - backend
 
 volumes:
   postgres_data:
   npm_cache:
-
-
-
