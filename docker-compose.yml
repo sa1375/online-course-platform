@@ -35,17 +35,19 @@ services:
     restart: always
     volumes:
       - ./frontend:/app                        # Project files (bind mount)
-      - node_modules_cache:/app/node_modules   # Persist node_modules in a volume
+      - npm_cache:/app/.npm-cache
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - WATCHPACK_POLLING=true                 # Enable file watching in containers
     depends_on:
       - backend
 
 volumes:
   postgres_data:
-  node_modules_cache:
+  npm_cache:
 
 
 
